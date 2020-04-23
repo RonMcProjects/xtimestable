@@ -175,10 +175,11 @@ int main(argc, argv)
 int argc;
 char **argv;
 {
-    int done;
+    int done = 0;
     int iter = 10;
     int factor = 2;
-    int animate = 0;
+    int animate = -1;
+    useconds_t delay = 500000;
     XEvent event;
 
     initX();
@@ -196,9 +197,13 @@ char **argv;
     {
         factor = atoi(argv[2]);
     }
-    if (argc == 4)
+    if (argc >= 4)
     {
         animate = atoi(argv[3]);
+    }
+    if (argc == 5)
+    {
+        delay = atoi(argv[4]);
     }
 
     /* flush event queue */
@@ -207,20 +212,43 @@ char **argv;
     do {
         XClearWindow(display, main_window);
         display_something(iter, factor);
+        if (animate == -1)
+            display_something(iter, factor);
 
         XSelectInput(display, main_window, KeyPressMask | ButtonPressMask);
 
         if (factor == 2) usleep(500000);
-        factor += animate;
-        usleep(500000);
-    } while (animate && (factor <= iter));
+        if (animate == 0)
+        {
+            XNextEvent(display, &event);
+            if (event.xkey.keycode == 0x18) /* 'q' */
+            {
+                break;
+            }
+            else if (event.xkey.keycode == 0x21) /* 'p' */
+            {
+                factor -= 1;
+            }
+            else
+            {
+                factor += 1;
+            }
+        }
+        else
+        {
+            factor += animate;
+            usleep(delay);
+        }
+    } while ((animate != -1) && (factor <= iter));
 
-    done = 0;
-    while (!done)
+    if (event.xkey.keycode != 0x18)
     {
-        XNextEvent(display, &event);
-        if ((event.type == KeyPress) || (event.type == ButtonPress))
-            done = 1;
+        while (!done)
+        {
+            XNextEvent(display, &event);
+            if ((event.type == KeyPress) || (event.type == ButtonPress))
+                done = 1;
+        }
     }
     quitX();
 
