@@ -159,11 +159,11 @@ int display_something(int iter, int factor)
         x1 = cos(ang1);
         y1 = sin(ang1);
         x1_scaled = x1 * SCALE_FACTOR + SCALE_FACTOR;
-        y1_scaled = y1 * SCALE_FACTOR + SCALE_FACTOR;
+        y1_scaled = -1.0 * y1 * SCALE_FACTOR + SCALE_FACTOR;
         x2 = cos(ang2);
         y2 = sin(ang2);
         x2_scaled = x2 * SCALE_FACTOR + SCALE_FACTOR;
-        y2_scaled = y2 * SCALE_FACTOR + SCALE_FACTOR;
+        y2_scaled = -1.0 * y2 * SCALE_FACTOR + SCALE_FACTOR;
         XDrawLine(display, main_window, gc, (int)x1_scaled, (int)y1_scaled, (int)x2_scaled, (int)y2_scaled);
         XFlush(display);
     }
