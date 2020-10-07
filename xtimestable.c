@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#define SCALE_FACTOR 340
+#define SCALE_FACTOR 960
 #define PI 3.1415926536
 
 /*
@@ -207,8 +207,6 @@ char **argv;
     }
 
     /* flush event queue */
-    XSelectInput(display, main_window, ExposureMask);
-    XNextEvent(display, &event);
     do {
         XClearWindow(display, main_window);
         display_something(iter, factor);
