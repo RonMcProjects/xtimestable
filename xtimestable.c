@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#define SCALE_FACTOR 960
+#define SCALE_FACTOR 768
 #define PI 3.1415926536
 
 /*
@@ -176,7 +176,7 @@ int argc;
 char **argv;
 {
     int done = 0;
-    int iter = 10;
+    int iter = 200;
     int factor = 2;
     int animate = -1;
     useconds_t delay = 500000;
