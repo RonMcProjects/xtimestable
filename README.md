@@ -6,6 +6,7 @@ A very simple algorithm creates these amazing patterns, so I thought I'd try my 
 
 It looked especially intriguing on the high resolution monitor.  Some lower-res captures are here in a writeup I made if you want to get an idea:
 https://brutelearning.wordpress.com/2020/04/25/multiplications-around-a-circle/
+
 On the bottom right corner the multiplier is displayed.
 
 Here was the YouTube video that inspired it:
@@ -27,7 +28,7 @@ delay = delay between images in microseconds
 ```bash
 ./xtimestable
 ```
-**Draw the x76 plot with 270 lines, press any key to quit**
+**Draw the x61 plot with 270 lines, press any key to quit**
 ```bash
 ./xtimestable 270 61
 ```
