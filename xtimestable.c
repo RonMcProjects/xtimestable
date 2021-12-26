@@ -207,13 +207,11 @@ char **argv;
     }
 
     /* flush event queue */
+    XSelectInput(display, main_window, ExposureMask | KeyPressMask | ButtonPressMask);
+    XNextEvent(display, &event);
     do {
         XClearWindow(display, main_window);
         display_something(iter, factor);
-        if (animate == -1)
-            display_something(iter, factor);
-
-        XSelectInput(display, main_window, KeyPressMask | ButtonPressMask);
 
         if (factor == 2) usleep(500000);
         if (animate == 0)
