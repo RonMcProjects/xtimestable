@@ -32,7 +32,7 @@ delay = delay between images in microseconds
 ```bash
 ./xtimestable 270 61
 ```
-**Draw the x21 plot with 800 lines in interactive mode**
+**Draw the x77 plot with 800 lines in interactive mode**
 ```bash
 ./xtimestable 800 77 0
 ```
