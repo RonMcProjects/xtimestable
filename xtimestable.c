@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#define SCALE_FACTOR 768
+#define SCALE_FACTOR 992
 #define PI 3.1415926536
 
 /*
