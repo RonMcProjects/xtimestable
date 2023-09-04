@@ -165,8 +165,8 @@ int display_something(int iter, int factor)
         x2_scaled = x2 * SCALE_FACTOR + SCALE_FACTOR;
         y2_scaled = -1.0 * y2 * SCALE_FACTOR + SCALE_FACTOR;
         XDrawLine(display, main_window, gc, (int)x1_scaled, (int)y1_scaled, (int)x2_scaled, (int)y2_scaled);
-        XFlush(display);
     }
+    XFlush(display);
 
     return (0);
 }
